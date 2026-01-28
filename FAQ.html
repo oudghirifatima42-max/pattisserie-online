@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>L'art du goût</title>
+    <link rel="icon" type="image/png" href="Logo.png">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /*Le style d'ecriture en generale */
+            background-color: #fff5f8;
+            color: #4d0039; /*Le couleur d'ecriture en generale */
+            padding: 20px; /*espacement interieure entre conteneu html et les cadres  */
+        }
+
+        header {
+            background-color: #f8b6c2;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;  
+        }
+
+        h1 {
+            margin: 0;  /*enlève toutes les marges extérieures d’un élément (haut, bas, gauche, droite), donc aucun espace autour*/
+        }
+
+        .faq-container {
+            margin-top: 30px;  /*espace entre premier cadre est le cadre de titre */
+            display: flex;  /* Utilise Flexbox pour organiser les éléments enfants */
+            flex-direction: column;   /* Organise les éléments verticalement (whda taht whda ;cadre taht cadre) */
+            gap: 20px;  /* Espace de 20px entre chaque élément de la FAQ (entre quae cadre) */
+        }
+
+        .faq-item {
+            background-color: #ffeef5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(255, 182, 193, 0.3); /* ombre légère rose */
+        }
+
+        .question {
+            font-size: 1.3em;  /* Taille de police un peu plus grande pour la question */
+            font-weight: bold;
+            margin-bottom: 10px;  /* Espace entre la question et la réponse */
+        }
+
+        .answer {
+            font-size: 1.1em;
+            line-height: 1.6;  /* Hauteur de ligne augmentée pour aérer le texte */
+        }
+
+        .answer span {
+            font-weight: bold;
+            font-style: italic;
+            color: #a6005a;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FAQ - Pâtisserie L'Art du Goût</h1>
+    </header>
+
+    <div class="faq-container">
+
+        <div class="faq-item">
+            <div class="question">1. Quels types de pâtisseries proposez-vous ?</div>
+            <div class="answer">
+                Notre pâtisserie propose une grande variété de produits :
+                <span>sucré, salé, boulangerie, boissons</span>, ainsi que des spécialités <span>traditionnelles marocaines</span>.
+                Chaque catégorie est préparée avec soin pour satisfaire tous les goûts.
+            </div>
+        </div>
+        
+
+        <div class="faq-item">
+            <div class="question">2. Faites-vous des commandes spéciales pour les anniversaires ?</div>
+            <div class="answer">
+                Oui, nous réalisons des <span>gâteaux sur mesure</span> avec design et message personnalisé pour chaque occasion.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">3. Utilisez-vous des ingrédients bio ?</div>
+            <div class="answer">
+                Autant que possible ! Nous privilégions les <span>ingrédients bio et locaux</span> pour assurer la qualité de nos produits.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">4. Peut-on commander en ligne ?</div>
+            <div class="answer">
+                Oui, vous pouvez passer commande sur notre site avec <span>livraison ou retrait en boutique</span>.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="question">5. Où êtes-vous situés ?</div>
+            <div class="answer">
+                Nous sommes situés à <span>Hay Nahda F10 ,OUJDA</span>.
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

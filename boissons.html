@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="script.js?v=1.1"></script>
+    <link rel="icon" type="image/png" href="Logo.png">
+    <title>L'art du goût</title>
+    <style>
+        body {
+    margin-right: 270px;
+}
+
+        /* Style spécifique pour la section Boissons */
+#f + div .produit {
+    width: 200px;
+    height: 400px;
+    display: inline-block;
+    vertical-align: top;
+    overflow: hidden;
+}
+
+#f + div .produit img {
+    width: 180px;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+#f + div .produit p {
+    height: 40px;
+    overflow: hidden;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+        .produit { 
+            border: 1px solid #ccc; 
+            padding: 10px; 
+            margin: 10px; 
+            width: 200px; 
+            display: inline-block;
+            text-align: center;
+        }
+         /* STYLE PANIER FIXE À DROITE */
+    .cart {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 250px;
+        height: 100%;
+        background-color: rgba(0, 121, 107, 0.95);
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        overflow-y: auto;
+    }
+
+        .cart h2 {
+            border-bottom: 1px solid #917576;
+            padding-bottom: 10px;
+            font-size: 24px;
+
+        }
+
+        .cart .notice {
+            background-color: black;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .cart .empty-message {
+            margin: 20px 0;
+            font-size: 1em;
+            color:white;
+        }
+
+        .cart .total {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        .cart button {
+            background-color:  black;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            cursor: pointer;
+        }
+       
+
+        #f {
+text-align: center;
+
+font-family: cursive;
+color: #00796b;
+    }
+    .produit button {
+    background-color:#00796b; /* couleur rose */
+    color: white; /* texte blanc */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-top: 10px;
+    display: block; /* important pour centrer */
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    border-radius: 10px; /* optionnel : coins arrondis pour plus joli */
+    transition: background-color 0.3s; /* animation douce */
+}
+/*Style de la dernier barre */
+        /* Contact Section */
+        .contact-section {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             padding: 5px 5px 15px;
+             background-color: #d0f0e0;
+             width: 100%;
+             height: 100%; 
+             margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .contact-item {
+            text-align: center;
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .contact-item h2 {
+            font-family: 'dancing script',cursive;
+            font-size:48;
+            font-weight:600;
+            color: #00796b; /* Rose bébé */
+            text-shadow: 2px 2px 4px rgba(192, 61,114, 0.3)
+        }
+
+        .contact-item p, .contact-item li {
+            margin: 1px 0;
+            line-height: 1.6;
+            color: #004d40;            ;
+            font-size: 1.1em;
+            list-style-type: none;
+        }
+
+        .contact-item a {
+            color: #00796b;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        
+        }
+
+    </style>
+</head>
+<body>
+
+<h1 id="f">Boissons</h1>
+
+
+<div class="main-content",style="text-align">
+    <div class="produit">
+        <img src="Boiss/mojito.jpg" alt="Mojito" width="200" height="300">
+        <p> Mojito- 30 DH</p>
+        <button onclick="ajouterPanier('Mojito', 30)">Ajouter au panier</button>
+    </div>
+
+    <div class="produit">
+        <img src="Boiss/icedcoffee.jpg" alt="Caramel Hazelnut Iced Coffee" width="200" height="300">
+        <p> Iced Coffee - 30 DH</p>
+        <button onclick="ajouterPanier('Iced Coffee', 30)">Ajouter au panier</button>
+    </div>
+
+    <div class="produit">
+        <img src="Boiss/soda.jpg" alt="Soda" width="200" height="300">
+        <p>Soda - 8 DH</p>
+        <button onclick="ajouterPanier('Soda', 8)">Ajouter au panier</button>
+    </div>
+    <div class="produit">
+        <img src="Boiss/the.jpg" alt="thé à la menthe" width="200" height="300">
+        <p>"thé à la menthe" - 21 DH</p>
+        <button onclick="ajouterPanier('Thé à la menthe', 21)">Ajouter au panier</button>
+    </div><br><br>
+    <div class="produit">
+        <img src="Boiss/chocolat au lait.jpg" alt="thé à la menthe" width="200" height="300">
+        <p>"Chocolat chaud" - 25 DH</p>
+        <button onclick="ajouterPanier('Chocolat chaud', 25)">Ajouter au panier</button>
+    </div>
+    <div class="produit">
+        <img src="Boiss/jus de fruit.jpg" alt="thé à la menthe" width="200" height="300">
+        <p>"Jus de fruits" - 28 DH</p>
+        <button onclick="ajouterPanier('Jus de fruits', 28)">Ajouter au panier</button>
+    </div>
+    <div class="produit">
+        <img src="Boiss/eau de coco.jpg" alt="thé à la menthe" width="200" height="300">
+        <p>"Eau de coco " - 30 DH</p>
+        <button onclick="ajouterPanier('eau de coco', 30)">Ajouter au panier</button>
+    </div>
+    <div class="produit">
+        <img src="Boiss/bublle the.jpg" alt="Eau de coco " width="200" height="300">
+        <p>"Bubble tea " - 35 DH</p>
+        <button onclick="ajouterPanier('Bubble tea ', 35)">Ajouter au panier</button>
+    </div><br>
+    <div class="produit">
+        <img src="Boiss/citronnade.jpg" alt="thé à la menthe" width="200" height="300">
+        <p>"Citronnade " - 35 DH</p>
+        <button onclick="ajouterPanier('Citronnade', 35)">Ajouter au panier</button>
+    </div>
+    <div class="produit">
+        <img src="Boiss/cidre chaud.jpg" alt="thé à la menthe" width="200" height="300">
+        <p>"Cidre chaud" - 40 DH</p>
+        <button onclick="ajouterPanier('Cidre chaud', 40)">Ajouter au panier</button>
+    </div>
+    <div class="produit">
+        <img src="Boiss/matcha.jpg" alt="thé à la menthe" width="200" height="300">
+        <p>"Matcha latte" - 28 DH</p>
+        <button onclick="ajouterPanier('Matcha latte', 28)">Ajouter au panier</button>
+    </div>
+    <div class="produit">
+        <img src="Boiss/lassi a la mangue.jpg" alt="thé à la menthe" width="200" height="300">
+        <p>"Lassi à la mangue" - 40 DH</p>
+        <button onclick="ajouterPanier('Lassi à la mangue', 40)">Ajouter au panier</button>
+    </div>
+</div>
+
+<div class="cart">
+    <h2>Votre Panier 🛒</h2>
+    <div class="notice">Paiement a la livraison</div>
+    <div class="empty-message">Votre panier est vide.<br>Ajoutez vos produits préférés.</div>
+    <ul id="liste-panier"></ul>
+    <p> <span id="total">0</span> </p>
+    <button onclick="commander()">Continuer</button>
+</div>
+<div class="contact-section">
+       
+    <div class="contact-grid">
+        <div class="contact-item">
+            <h2>Adresse:</h2><hr>
+            <p>Hay Nahda F10 OUJDA</p>
+        </div>
+        <div class="contact-item">
+            <h2>Horaires d'ouvertures:</h2><hr>
+            <li>Lundi--Dimanche 09h00 - 20h00</li>
+
+        </div>
+        <div class="contact-item">
+            <h2>Contact:</h2><hr>
+            <p>Tél: 07 23 45 67 89</p>
+            <p>Email: <a href="mailto:contact@lartdugout">contact@lartdugout.fr</a></p>
+        </div>
+        <script src="script.js"></script>
+</body>
+</html>

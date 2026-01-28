@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    
+    <meta charset="UTF-8">
+    <title>Formulaire Commande</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f3ee;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: pink;
+            text-shadow: 2px 2px 4px pink;
+        }
+
+        form {
+            max-width: 500px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        input[type="submit"] {
+            background-color: pink;
+            color: white;
+            border: none;
+            margin-top: 15px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #9e146e;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Formulaire de Commande</h1>
+
+<form action="ctrl.php" method="POST">
+    <label>Nom :</label>
+    <input type="text" name="nom" required>  <!-- required l’utilisateur ne peut pas envoyer le formulaire sans remplir ce champ -->
+
+    <label>Prénom :</label>
+    <input type="text" name="prenom" required>
+
+    <label>Adresse :</label>
+    <input type="text" name="adresse" required>
+
+    <label>Email :</label>
+    <input type="email" name="email" required>
+
+    <label>Téléphone :</label>
+    <input type="tel" name="telephone" required>
+
+    <label for="order">Votre commande :</label>
+    <textarea id="order" name="order" rows="4" cols="50" readonly></textarea><br><br>
+   
+    <input type="submit" value="Valider la commande">
+    <input type="hidden" name="panier" id="panier">
+</form>
+<script>
+    // Simule un panier local pour l’exemple (à remplacer par ton panier réel)
+    const panier = JSON.parse(localStorage.getItem("panier")) || [];
+
+    // Remplir la zone "Votre commande" pour affichage visuel
+    let texteCommande = panier.map(p => `${p.produit} (x${p.quantite})`).join("\n");
+    document.getElementById("order").value = texteCommande;
+
+    // Avant d'envoyer le formulaire, on remplit le champ caché "panier"
+    document.querySelector("form").addEventListener("submit", function(e) {
+        document.getElementById("panier").value = JSON.stringify(panier);
+    });
+</script>
+
+
+
+</body>
+</html>

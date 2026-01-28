@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="Logo.png">
+    <title>L'art du goût</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #F3F0E9; /* Fond beige/gris très clair */
+            padding-right: 270px;
+        }
+    
+        h1 {
+            color: #6B4F3B; /* Brun doux */
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    
+        .produits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    
+        .produit {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+    
+        .produit-img-container {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    
+        .produit-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+    
+        .produit p {
+            margin: 10px 0;
+            color: #333;
+        }
+    
+        .produit button {
+            background-color: #6B4F3B; /* Brun doux */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+    
+        
+    
+        /* STYLE PANIER */
+        .cart {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #B5A27B; /* Beige plus foncé */
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            border-left: 1px solid #d8cbbb;
+        }
+    
+        .cart h2 {
+            color: #6B4F3B;
+            border-bottom: 1px solid #988567;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+    
+        .cart .notice {
+            background-color: #e1d3b3;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            border-radius: 4px;
+            color: #5a4a42;
+        }
+    
+        .cart .empty-message {
+            margin: 20px 0;
+            font-size: 1em;
+            color: #666;
+        }
+    
+        .cart #liste-panier {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin: 10px 0;
+        }
+    
+        .cart #liste-panier li {
+            padding: 5px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+    
+        .cart .total {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: #6B4F3B;
+        }
+    
+        .cart button {
+            background-color: #6B4F3B;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        .cart button:hover {
+            background-color: #826655;
+        }
+    
+        .quantity-input {
+            width: 40px;
+            margin: 0 5px;
+        }
+    
+        /*Style de la dernier barre */
+        /* Contact Section */
+        .contact-section {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             padding: 5px 5px 15px;
+             background-color: #B5A27B;
+             width: 100%;
+             height: 100%; 
+             margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .contact-item {
+            text-align: center;
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .contact-item h2 {
+            font-family: 'dancing script',cursive;
+            font-size:48;
+            font-weight:600;
+            color: #6B4F3B
+        
+            text-shadow: 2px 2px 4px rgba(192, 61,114, 0.3)
+        }
+
+        .contact-item p, .contact-item li {
+            margin: 1px 0;
+            line-height: 1.6;
+            color: #050505;
+            font-size: 1.1em;
+            list-style-type: none;
+        }
+
+        .contact-item a {
+            color: #917576;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        
+        }
+           
+
+    </style>
+    
+</head>
+
+<body>
+
+    <h1>Délices Salés</h1>
+
+<div class="produits-container">
+    <div class="produit">
+        <div class="produit-img-container">
+            <img src="Sale/batbout.png.jpg" alt="Batbot au poulet" class="produit-img">
+        </div>
+        <p>Batbout au poulet - 10 DH</p>
+        <button onclick="ajouterPanier('Batbout au poulet', 10)">Ajouter au panier</button>
+    </div>
+
+    <div class="produit">
+        <div class="produit-img-container">
+            <img src="Sale/pizza.png.jpg" alt="Mini Pizza végétarienne" class="produit-img">
+        </div>
+        <p>Mini Pizza végétarienne - 10 DH</p>
+        <button onclick="ajouterPanier('Mini Pizza végétarienne', 10)">Ajouter au panier</button>
+    </div>
+
+    <div class="produit">
+        <div class="produit-img-container">
+            <img src="Sale/quiche.png.jpg" alt="Quiche à la dinde" class="produit-img">
+        </div>
+        <p>Quiche à la dinde - 12 DH</p>
+        <button onclick="ajouterPanier('Quiche à la dinde', 12)">Ajouter au panier</button>
+    </div>
+
+    <div class="produit">
+        <div class="produit-img-container">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349" alt="Mini-Burger" class="produit-img">
+        </div>
+        <p>Mini-Burger à la viande hachée - 15 DH</p>
+        <button onclick="ajouterPanier('Mini-Burger à la viande hachée', 15)">Ajouter au panier</button>
+    </div>
+
+    <div class="produit">
+        <div class="produit-img-container">
+            <img src="Sale/wrap.png.jpg" alt="Wrap au thon" class="produit-img">
+        </div>
+        <p>Wrap au thon - 20 DH</p>
+        <button onclick="ajouterPanier('Wrap au thon', 20)">Ajouter au panier</button>
+    </div>
+
+    <div class="produit">
+        <div class="produit-img-container">
+            <img src="Sale/brioche.png.jpg" alt="Brioche salée au fromage" class="produit-img">
+        </div>
+        <p>Brioche salée au fromage - 9 DH</p>
+        <button onclick="ajouterPanier('Brioche salée au fromage', 9)">Ajouter au panier</button>
+    </div>
+
+    <div class="produit">
+        <div class="produit-img-container">
+            <img src="Sale/tacis.png.jpg" alt="Mini-Tacos mixte" class="produit-img">
+        </div>
+        <p>Mini-Tacos mixte - 15 DH</p>
+        <button onclick="ajouterPanier('Mini-Tacos mixte', 15)">Ajouter au panier</button>
+    </div>
+
+    <div class="produit">
+        <div class="produit-img-container">
+            <img src="Sale/chaussons.png.jpg" alt="Chaussons salés à la dinde" class="produit-img">
+        </div>
+        <p>Chaussons salés à la dinde - 10 DH</p>
+        <button onclick="ajouterPanier('Chaussons salés à la dinde', 10)">Ajouter au panier</button>
+    </div>
+
+    <div class="produit">
+        <div class="produit-img-container">
+            <img src="Sale/bri.pnj.jpg" alt="Briouate à la viande hachée" class="produit-img">
+        </div>
+        <p>Briouate à la viande hachée - 15 DH</p>
+        <button onclick="ajouterPanier('Briouate à la viande hachée', 15)">Ajouter au panier</button>
+    </div>
+
+    <div class="produit">
+        <div class="produit-img-container">
+            <img src="Sale/ms.png.jpg" alt="Msamens au poulet" class="produit-img">
+        </div>
+        <p>Msamens au poulet - 10 DH</p>
+        <button onclick="ajouterPanier('Msamens au poulet', 10)">Ajouter au panier</button>
+    </div>
+
+    <div class="produit">
+        <div class="produit-img-container">
+            <img src="Sale/bastila.png.jpg" alt="Mini bastilla aux fruits de mer" class="produit-img">
+        </div>
+        <p>Mini bastilla aux fruits de mer - 25 DH</p>
+        <button onclick="ajouterPanier('Mini bastilla aux fruits de mer', 25)">Ajouter au panier</button>
+    </div>
+
+    <div class="produit">
+        <div class="produit-img-container">
+            <img src="Sale/croissant.png.jpg" alt="Croissant Salé à la dinde fumée" class="produit-img">
+        </div>
+        <p>Croissant Salé à la dinde fumée - 10 DH</p>
+        <button onclick="ajouterPanier('Croissant Salé à la dinde fumée', 10)">Ajouter au panier</button>
+    </div>
+</div>
+
+    <div class="contact-section">
+       
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h2>Adresse:</h2><hr>
+                <p>Hay Nahda F10 OUJDA</p>
+            </div>
+            <div class="contact-item">
+                <h2>Horaires d'ouvertures:</h2><hr>
+                <li>Lundi--Dimanche 09h00 - 20h00</li>
+
+            </div>
+            <div class="contact-item">
+                <h2>Contact:</h2><hr>
+                <p>Tél: 07 23 45 67 89</p>
+                <p>Email: <a href="mailto:contact@lartdugout">contact@lartdugout.fr</a></p>
+            </div>
+
+    <div class="cart">
+        <h2>Votre Panier 🛒</h2>
+        <div class="notice">Paiement a la livraison</div>
+        <div class="empty-message">Votre panier est vide.<br>Ajoutez vos produits préférés.</div>
+        <ul id="liste-panier"></ul>
+        <div class="total"> <span id="total">0</span> </div>
+        <button onclick="commander()">Continuer</button>
+    </div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

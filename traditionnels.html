@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="Logo.png">
+    <title>L'art du goût</title>
+<style>
+    body {
+       
+    font-family: 'Segoe UI', sans-serif;
+
+}
+
+    .produit { 
+        border: 1px solid #ccc; 
+        padding: 10px; 
+        margin: 10px; 
+        width: 200px; 
+        display: inline-block; 
+    }
+
+    /* STYLE PANIER FIXE À DROITE */
+    .cart {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 250px;
+        height: 100%;
+        background-color: #f8dac2;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        overflow-y: auto;
+    }
+
+    .cart h2 {
+        border-bottom: 1px solid #917576;
+        padding-bottom: 10px;
+        font-size: 24px;
+    }
+
+    .cart .notice {
+        background-color: #ffffff;
+        padding: 10px;
+        margin: 20px 0;
+        font-size: 0.9em;
+    }
+
+    .cart .empty-message {
+        margin: 20px 0;
+        font-size: 1em;
+    }
+
+    .cart .total {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin: 20px 0;
+    }
+
+    .cart button {
+        background-color: #b85c38;
+        color: white;
+        width: 100%;
+        padding: 10px;
+        font-size: 1em;
+        border: none;
+        cursor: pointer;
+    }
+
+    /* Ajuste le corps pour laisser de l'espace au panier */
+    body {
+        margin-right: 270px; /* 250px largeur panier + 20px marge */
+    }
+
+    .produit button {
+    background-color: #b85c38; /* couleur rose */
+    color: white; /* texte blanc */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-top: 10px;
+    display: block; /* important pour centrer */
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    border-radius: 10px; /* optionnel : coins arrondis pour plus joli */
+    transition: background-color 0.3s; /* animation douce */
+}
+
+/*Style de la dernier barre */
+        /* Contact Section */
+        .contact-section {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             padding: 5px 5px 15px;
+             background-color: #f8dac2;
+             width: 100%;
+             height: 100%; 
+             margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .contact-item {
+            text-align: center;
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .contact-item h2 {
+            font-family: 'dancing script',cursive;
+            font-size:48;
+            font-weight:600;
+            color: #b85c38; /* Rose bébé */
+            text-shadow: 2px 2px 4px rgba(192, 61,114, 0.3)
+        }
+
+        .contact-item p, .contact-item li {
+            margin: 1px 0;
+            line-height: 1.6;
+            color: #050505;
+            font-size: 1.1em;
+            list-style-type: none;
+        }
+
+        .contact-item a {
+            color: #917576;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        
+        }
+        #f {
+            text-align: center;
+            color: #b85c38;
+        }
+           
+</style>
+</head>
+<body>
+
+    <h1 id="f">Gâteaux traditionnels</h1>
+
+    <div style="text-align: center;">
+        <div class="produit">
+            <img src="Tradi/fekass.jpg" alt="fekass" width="200" height="300">
+            <p>fekass - 100DH /1kg</p>
+            <button onclick="ajouterPanier('fekass', 100)">Ajouter au panier</button>
+        </div>
+    
+        <div class="produit">
+            <img src ="Tradi/chebakia.jpg" alt="chebakia" width="200" height="300"">
+            <p>chebakia -110DH/1kg</p>
+            <button onclick="ajouterPanier('chebakia', 35)">Ajouter au panier</button>
+        </div>
+      
+        <div class="produit">
+            <img src="Tradi/Corne de gazelle.jpg" alt="Corne de gazelle"  width="200" height="283" >
+            <p>Corne de gazelle-130DH/1kg</p>
+            <button onclick="ajouterPanier('Corne de gazelle', 130)">Ajouter au panier</button>
+        </div>
+        <div class="produit">
+            <img src="Tradi/ghriba.jpg" alt="Corne de gazelle"  width="200" height="280" >
+            <p> Ghriba aux amandes-130DH/1kg</p>
+            <button onclick="ajouterPanier('Ghriba aux amandes', 130)">Ajouter au panier</button>
+        </div> <br>
+        <br>
+        <div class="produit">
+            <img src="Tradi/kaak.jpg" alt="kaak" width="200" height="300">
+            <p>kaak -70DH/1kg</p>
+            <button onclick="ajouterPanier('kaak', 70)">Ajouter au panier</button>
+        </div>
+        <div class="produit">
+            <img src="Tradi/makrout.jpg" alt="makrout" width="200" height="300">
+            <p>makrout -80DH/1kg</p>
+            <button onclick="ajouterPanier('makrout', 80)">Ajouter au panier</button>
+        </div>
+        <div class="produit">
+            <img src="Tradi/sellou.jpg" alt="sellou" width="200" height="300">
+            <p>sellou -160DH/1kg</p>
+            <button onclick="ajouterPanier('sellou', 160 )">Ajouter au panier</button>
+        </div>
+    
+        <div class="produit">
+            <img src="Tradi/boule de coco.jpg" alt="boule de coco" width="200" height="300">
+            <p>Boule de coco -80DH/1kg</p>
+            <button onclick="ajouterPanier('boule de coco ', 80)">Ajouter au panier</button>
+        </div> <br>
+        <br>
+        <div class="produit">
+            <img src="Tradi/Bahla.jpg" alt="bahla" width="200" height="300">
+            <p>Bahla -80DH/1kg</p>
+            <button onclick="ajouterPanier('bahla ', 80)">Ajouter au panier</button>
+        </div>
+        <div class="produit">
+            <img src="Tradi/zellige.jpg" alt="zellige" width="200" height="300">
+            <p>Zellige -90DH/1kg</p>
+            <button onclick="ajouterPanier('zellige',90)">Ajouter au panier</button>
+        </div>
+        <div class="produit">
+            <img src="Tradi/sable fraise.jpg" alt="Sablé au fraise" width="200" height="300">
+            <p> Sablé au fraise -90DH/1kg</p>
+            <button onclick="ajouterPanier('Sablé au fraise', 90)">Ajouter au panier</button>
+        </div>
+        <div class="produit">
+            <img src="Tradi/sable chocolat.jpg" alt="Sablé au chocolat" width="200" height="300">
+            <p> Sablé au chocolat -90DH/1kg</p>
+            <button onclick="ajouterPanier('Sablé au chocolat', 90)">Ajouter au panier</button>
+        </div>
+    </div>
+    
+        <!-- Ajoutez ici les autres produits avec leurs images dans le dossier "images" -->
+    </div>
+    
+ <div class="contact-section">
+       
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h2>Adresse:</h2><hr>
+                <p>Hay Nahda F10 OUJDA</p>
+            </div>
+            <div class="contact-item">
+                <h2>Horaires d'ouvertures:</h2><hr>
+                <li>Lundi--Dimanche 09h00 - 20h00</li>
+
+            </div>
+            <div class="contact-item">
+                <h2>Contact:</h2><hr>
+                <p>Tél: 07 23 45 67 89</p>
+                <p>Email: <a href="mailto:contact@lartdugout">contact@lartdugout.fr</a></p>
+            </div>
+
+
+<!-- Panier -->
+<div class="cart">
+    <h2>Votre Panier 🛒</h2>
+    <div class="notice">Paiement a la livraison</div>
+    <div class="empty-message" id="message-vide">Votre panier est vide.<br>Ajoutez vos produits préférés.</div>
+    <ul id="liste-panier" style="list-style: none; padding: 0;"></ul>
+    <p class="total"> <span id="total">0.00</span> </p>
+    <button onclick="commander()">CONTINUER</button>
+</div>
+<script src="script.js"></script>
+
+</body>
+</html>

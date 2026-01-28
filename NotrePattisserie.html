@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>L'art du goût</title>
+    <link rel="icon" type="image/png" href="Logo.png">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<body>
+    <!-- Barre du haut avec réseaux sociaux et navigation -->
+    <div class="top-bar">
+        <div class="left-section">
+            <a href="https://www.instagram.com/art_du_gout__?igsh=NXN2aThnM3F0YTVk" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+
+        <div class="right-section">
+            <a href="#">Accueil</a>
+            <a href="FAQ.html">FAQ</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <!-- Vidéo de fond -->
+    <div class="video-container">
+        <video autoplay loop muted playsinline>
+            <source src="video.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="content-wrapper">
+        <!-- Colonne de gauche avec horaires d'ouverture -->
+        <div class="opening-hours">
+            <h2 style="text-align: center;">Horaires d'ouverture</h2>
+            <p><strong>Lundi :</strong> 09h00 - 20h00</p><br>
+            <p><strong>Mardi :</strong> 09h00 - 20h00</p><br>
+            <p><strong>Mercredi :</strong> 09h00 - 20h00</p><br>
+            <p><strong>Jeudi :</strong> 09h00 - 20h00</p><br>
+            <p><strong>Samedi :</strong> 09h00 - 20h00</p><br>
+            <p><strong>Dimanche :</strong> 09h00 - 20h00</p><br>
+        </div>
+
+        <!-- Contenu principal avec les cartes -->
+        <div class="center-content">
+            <!-- Carte 1 -->
+            <div class="card sucre">
+                <div class="content">
+                    <h2><em>Délices Sucrés</em></h2>
+                    <p>La douceur de l'art pâtisserie pour adoucir vos moments.</p>
+                    <a href="Sucre.html" class="btn">Découvrir</a>
+                </div>
+            </div>
+
+            <!-- Carte 2 -->
+            <div class="card sale">
+                <div class="content">
+                    <h2><em>Délices salés</em></h2>
+                    <p>Du goût, du caractère, et une touche de gourmandise salée à chaque bouchée!</p>
+                    <a href="sale.html" class="btn">Découvrir</a>
+                </div>
+            </div>
+
+            <!-- Carte 3 -->
+            <div class="card boulangerie">
+                <div class="content">
+                    <h2><em>Boulangerie</em></h2>
+                    <p>Le croquant, le moelleux, et toute l'authenticité du bon pain artisanal!</p>
+                    <a href="boulangerie.html" class="btn">Découvrir</a>
+                </div>
+            </div>
+
+            <!-- Carte 4 -->
+            <div class="card traditionnels">
+                <div class="content">
+                    <h2><em>Gâteaux Traditionnels</em></h2>
+                    <p>Des gâteaux faits avec passion pour éveiller vos sens.</p>
+                    <a href="traditionnels.html" class="btn">Découvrir</a>
+                </div>
+            </div>
+
+            <!-- Carte 5 -->
+            <div class="card boissons">
+                <div class="content">
+                    <h2><em>Les Boissons</em></h2>
+                    <p>Une sélection raffinée de boissons chaudes et froides.</p>
+                    <a href="boissons.html" class="btn">Découvrir</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Panier -->
+        <div class="cart">
+            <h2>Votre Panier 🛒</h2> 
+            <div class="notice"> Paiement a la livraison </div>
+            <div class="empty-message" id="message-vide">Votre panier est vide.<br>Ajoutez vos produits préférés.</div>
+            <ul id="liste-panier" ></ul>
+            <p class="total"><span id="total">0.00</span></p>
+            <button onclick="commander()">CONTINUER</button>
+        </div>
+    </div>
+
+    <!-- Citation -->
+    <div class="barre-citation">
+        <p class="citation">
+            "La pâtisserie est l'art de transformer des ingrédients simples en des moments de pur bonheur."
+        </p>
+        <p class="auteur">&ndash; L'art du Goût &ndash;</p>   <!--&ndash represente (-)  -->
+    </div><br>
+
+    <!-- Commentaires clients -->
+    <div class="barre-commentaires">
+        <h1>Ce que disent nos Clients</h1><br>
+        <div class="conteneur-sections">
+            <!-- Section 1 -->
+            <div class="section"><br>
+                <p>
+                    "Les pâtisseries sont fraîches, légères, et les ingrédients sont de qualité. On sent le savoir-faire derrière chaque création."
+                </p>
+                <p class="auteur">&ndash; Sirine</p>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="section"><br>
+                <p>
+                    "La pâtisserie est une véritable œuvre d'art. Chaque détail est soigné, et le goût est à la hauteur de la présentation."
+                </p>
+                <p class="auteur">&ndash; Rami</p>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="section"><br>
+                <p>
+                    "Les macarons sont incroyables ! La croûte est croustillante, et l'intérieur est fondant. Les parfums sont originaux et délicieux."
+                </p>
+                <p class="auteur">&ndash; Lina</p>
+            </div>
+        </div>
+    </div><br>
+
+    <!-- Section Contact -->
+    <div class="contact-section">
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h2>Adresse:</h2><hr>
+                <p>Hay Nahda F10 OUJDA</p>
+            </div>
+            <div class="contact-item">
+                <h2>Horaires d'ouvertures:</h2><hr>
+                <li>Lundi--Dimanche 09h00 - 20h00</li>
+            </div>
+            <div class="contact-item">
+                <h2>Contact:</h2><hr>
+                <p>Tél: 07 23 45 67 89</p>
+                <p>Email: <a href="mailto:contact@lartdugout">contact@lartdugout.fr</a></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

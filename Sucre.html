@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="Logo.png">
+    <title>L'art du goût</title>
+<style>
+     body {
+        margin-right: 270px; /* 250px largeur panier + 20px marge */
+    }
+    /* styler le titre */
+    #f {
+     text-align: center;
+     font-family: cursive;
+     color: #cc2766;
+    }
+     .produit { 
+        border: 1px solid #ccc; 
+        padding: 10px; 
+        margin: 10px; 
+        width: 200px; 
+        display: inline-block; 
+    }
+
+    /* STYLE PANIER FIXE À DROITE */
+    .cart {
+        position: fixed;
+        top: 0;
+        right: 0;  /* Aligné à droite de la page */
+        width: 250px;
+        height: 100%;
+        background-color: #F8D7DA;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        overflow-y: auto;  /* Ajoute une barre de défilement si le contenu dépasse la hauteur */
+    }
+
+    .cart h2 {
+        border-bottom: 1px solid #917576;
+        padding-bottom: 10px;
+        font-size: 24px;
+    }
+
+    .cart .notice {
+        background-color: #F8D7DA;
+        padding: 10px;
+        margin: 20px 0;
+        font-size: 0.9em;
+    }
+
+    .cart .empty-message {
+        margin: 20px 0;
+        font-size: 1em;
+    }
+
+    .cart .total {
+        font-weight: bold;
+        font-size: 1.2em;
+        margin: 20px 0;
+    }
+
+    .cart button {
+        background-color: black;
+        color: white;
+        width: 100%;
+        padding: 10px;
+        font-size: 1em;
+        border: none;
+        cursor: pointer;
+    }
+    .produit button {
+    background-color: #cc2766; /* couleur rose */
+    color: white; /* texte blanc */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-top: 10px;
+    display: block; /* important pour centrer */
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    border-radius: 10px; /* optionnel : coins arrondis pour plus joli */
+    transition: background-color 0.3s; /* animation douce */
+}
+
+/* ------------------------------------ */
+/* DERNIERE BARRE CONTACT */
+/* ------------------------------------ */
+.contact-section {
+    display: flex;  /* Utilise Flexbox pour organiser les éléments enfants */ 
+    padding: 5px 5px 15px;  /*Les dimensions de notre cadre */
+    background-color: #F8D7DA;
+    width: 100%;  /* Prend toute la largeur disponible */
+    height: 100%;  /* Prend toute la longeur disponible */
+}
+
+.contact-grid {
+    display: flex;
+    justify-content: space-around;  /* Espace égal entre chaque bloc ona dans ce cas 3 blocs*/
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;  /* Espace intérieur autour du contenu */
+}
+
+.contact-item {
+    text-align: center;
+    padding: 0 20px;
+}
+
+.contact-item h2 {
+    font-family: 'dancing script', cursive;
+    font-size: 28px;
+    font-weight: 600;  /* Texte semi-gras */
+    color: #cc2766;
+    text-shadow: 2px 2px 4px rgba(192, 61,114, 0.3);
+}
+/* On applique ce style à tous les <p> et tous les <li> qui sont dans .contact-item. */
+.contact-item p, .contact-item li {
+    line-height: 0.5;  /* Hauteur de ligne pour la lisibilité */
+    color: #050505;
+    font-size: 1.1em;
+    list-style-type: none;  /*Myt3amalch m3hom come des listes supprime .  */
+}
+/*cONCERNANT EMAIL (LIEN) */
+.contact-item a {
+    color: #917576;
+    text-decoration: none;   /* Enlève le soulignement */
+
+}
+
+.contact-item a:hover {
+    text-decoration: underline; /*Si en passe survol sur lien contact@... ghysatar 3lih */
+}
+           
+</style>
+</head>
+<body>
+
+    <h1 id="f">Délices Sucrés</h1>
+
+
+<div class="produit">
+    <img src="Sucre/croissant chokolat.jpg" alt="Croissant au chocolat" width="200" height="300">
+    <p>Croissant au chocolat - 8 DH</p>
+    <button onclick="ajouterPanier('Croissant au chocolat', 8)">Ajouter au panier</button>
+</div>
+
+<div class="produit">
+    <img src="Sucre/Macaron framboise.jpg" alt="Macaron framboise" width="200" height="300">
+    <p>Macaron framboise - 50 DH</p>
+    <button onclick="ajouterPanier('Macaron framboise', 50)">Ajouter au panier</button>
+</div>
+
+<div class="produit">
+    <img src="Sucre/Mille-Feuille Classique.jpg" alt="Mille-Feuille Classique" width="200" height="300">
+    <p>Mille-Feuille Classique-13 DH</p>
+    <button onclick="ajouterPanier('Mille-Feuille Classique', 13)">Ajouter au panier</button>
+</div>
+<div class="produit">
+    <img src="Sucre/Mini tarte au citron meringuée.jpg" alt="Mini tarte au citron meringuée" width="200" height="300">
+    <p>Mini tarte au citron -  20DH</p>
+    <button onclick="ajouterPanier('Mini tarte au citron', 20)">Ajouter au panier</button>
+</div>
+<div class="produit">
+    <img src="Sucre/Gaufre au chocolat.jpg" alt="Gaufre au chocolat" width="200" height="300">
+    <p>Gauffre au chocolat -  29DH</p>
+    <button onclick="ajouterPanier('Gauffre au chocolat', 29)">Ajouter au panier</button>
+</div>
+<div class="produit">
+    <img src="Sucre/pancake Golden Stack.jpg" alt="pancake Golden Stack" width="200" height="300">
+    <p>Pancake Golden Stack -  30DH</p>
+    <button onclick="ajouterPanier('Pancake Golden Stack', 30)">Ajouter au panier</button>
+</div>
+<div class="produit">
+    <img src="Sucre/Crêpe au sucre et citron.jpg" alt="Crêpe au sucre et citron" width="200" height="300">
+    <p>Crêpe au citron -  40DH</p>
+    <button onclick="ajouterPanier('Crêpe au citron ', 40)">Ajouter au panier</button>
+</div>
+<div class="produit">
+    <img src="Sucre/Tablette chokolat lait.jpg" alt="Tablette chocolat lait" width="200" height="300">
+    <p>Tablette chocolat lait -  20DH</p>
+    <button onclick="ajouterPanier('Tablette chocolat lait', 20)">Ajouter au panier</button>
+</div>
+<div class="produit">
+    <img src="Sucre/Tartelette Praliné Noisette.jpg" alt="Tartelette Praliné Noisette" width="200" height="300">
+    <p>Tartelette Noisette -  20DH</p>
+    <button onclick="ajouterPanier('Tartelette Noisette ', 20)">Ajouter au panier</button>
+</div>
+<div class="produit">
+    <img src="Sucre/Craquant praline.jpeg" alt="Craquant praline" width="200" height="300">
+    <p>Craquant praline -  90DH</p>
+    <button onclick="ajouterPanier('Craquant praline', 90)">Ajouter au panier</button>
+</div>
+<div class="produit">
+    <img src="Sucre/chokolat dubai.jpg" alt="chocolat dubai" width="200" height="300">
+    <p>Chocolat dubai -  150DH</p>
+    <button onclick="ajouterPanier('Chocolat dubai', 150)">Ajouter au panier</button>
+</div>
+<div class="produit">
+    <img src="Sucre/Mille-Feuille Exotique.jpg" alt="Mille-Feuille Exotique" width="200" height="300">
+    <p>Mille-Feuille Exotique -  22DH</p>
+    <button onclick="ajouterPanier('Mille-Feuille Exotique ', 22)">Ajouter au panier</button>
+</div>
+ <div class="contact-section">
+       
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h2>Adresse:</h2><hr>
+                <p>Hay Nahda F10 OUJDA</p>
+            </div>
+            <div class="contact-item">
+                <h2>Horaires d'ouvertures:</h2><hr>
+                <li>Lundi--Dimanche 09h00 - 20h00</li>
+
+            </div>
+            <div class="contact-item">
+                <h2>Contact:</h2><hr>
+                <p>Tél: 07 23 45 67 89</p>
+                <p>Email: <a href="mailto:contact@lartdugout">contact@lartdugout.fr</a></p>
+            </div>
+
+            
+            <div class="cart">
+                <h2>Votre Panier 🛒</h2>
+                <div class="notice">Paiement a la livraison</div>
+                <div class="empty-message">Votre panier est vide.<br>Ajoutez vos produits préférés.</div>
+                <ul id="liste-panier"></ul>
+                <div class="total"><span id="total">0</span> </div>
+                <button onclick="commander()">Continuer</button>
+            </div>
+    <script src="script.js"></script>
+
+    
+
+
+</body>
+</html>

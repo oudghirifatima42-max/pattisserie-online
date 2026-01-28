@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="Logo.png">
+    <title>L'art du goût</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #fff9f0;
+            padding-right: 270px;
+            /* Pour éviter que le contenu soit caché par le panier */
+        }
+
+        h1 {
+            color: #8B4513;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .produits-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .produit {
+            border: 1px solid #e0d6c2;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        
+        
+
+        .produit-img-container {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .produit-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+       
+
+        .produit p {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .produit button {
+            background-color: #D4A76A;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        
+
+        /* STYLE PANIER */
+        .cart {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 100%;
+            background-color: #f8f1e9;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            border-left: 1px solid #e0d6c2;
+        }
+
+        .cart h2 {
+            color: #8B4513;
+            border-bottom: 1px solid #d4a76a;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .cart .notice {
+            background-color: #e8d5b5;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            border-radius: 4px;
+            color: #5a4a42;
+        }
+
+        .cart .empty-message {
+            margin: 20px 0;
+            font-size: 1em;
+            color: #666;
+        }
+
+        .cart #liste-panier {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin: 10px 0;
+        }
+
+        .cart #liste-panier li {
+            padding: 5px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .cart .total {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 20px 0;
+            color: #8B4513;
+        }
+
+        .cart button {
+            background-color: #8B4513;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cart button:hover {
+            background-color: #A0522D;
+        }
+
+        .quantity-input {
+            width: 40px;
+            margin: 0 5px;
+        }
+
+        .delete-btn {
+            background: transparent;
+            color: red;
+            border: none;
+            margin-left: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    /*Style de la dernier barre */
+        /* Contact Section */
+        .contact-section {
+             display: flex;
+             flex-direction: column;
+             align-items: center;
+             padding: 5px 5px 15px;
+             background-color: #e8d5b5;
+             width: 100%;
+             height: 100%; 
+             margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .contact-item {
+            text-align: center;
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .contact-item h2 {
+            font-family: 'dancing script',cursive;
+            font-size:48;
+            font-weight:600;
+            color: #A0522D; /* Rose bébé */
+            text-shadow: 2px 2px 4px rgba(192, 61,114, 0.3)
+        }
+
+        .contact-item p, .contact-item li {
+            margin: 1px 0;
+            line-height: 1.6;
+            color: #050505;
+            font-size: 1.1em;
+            list-style-type: none;
+        }
+
+        .contact-item a {
+            color: #917576;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        
+        }
+           
+    </style>
+</head>
+
+<body>
+
+    <h1>Boulangerie</h1>
+
+    <div class="produits-container">
+        <div class="produit">
+            <div class="produit-img-container">
+                <img src="boulangerie/bagette 2.jpg" alt="Bagette" class="produit-img">
+            </div>
+            <p>Bagette - 2 DH</p>
+            <button onclick="ajouterPanier('Bagette', 2)">Ajouter au panier</button>
+        </div>
+
+        <div class="produit">
+            <div class="produit-img-container">
+                <img src="boulangerie/fougasse.jpg" alt="Foudasse" class="produit-img">
+            </div>
+            <p>Foudasse - 5 DH</p>
+            <button onclick="ajouterPanier('Foudasse', 5)">Ajouter au panier</button>
+        </div>
+
+        <div class="produit">
+            <div class="produit-img-container">
+                <img src="boulangerie/pain compagne.jpg" alt="Pain de campagne" class="produit-img">
+            </div>
+            <p>Pain de campagne - 10 DH</p>
+            <button onclick="ajouterPanier('Pain de campagne', 10)">Ajouter au panier</button>
+        </div>
+
+        <div class="produit">
+            <div class="produit-img-container">
+                <img src="boulangerie/pain complet.jpg" alt="Pain complet" class="produit-img">
+            </div>
+            <p>Pain complet - 10 DH</p>
+            <button onclick="ajouterPanier('Pain complet', 10)">Ajouter au panier</button>
+        </div>
+
+        <div class="produit">
+            <div class="produit-img-container">
+                <img src="boulangerie/pain d'épeautre.jpg" alt="Pain d'épeautre" class="produit-img">
+            </div>
+            <p>Pain d'épeautre - 15 DH</p>
+            <button onclick="ajouterPanier('Pain d\'épeautre', 15)">Ajouter au panier</button>
+        </div>
+
+        <div class="produit">
+            <div class="produit-img-container">
+                <img src="boulangerie/pain de noix.jpg" alt="Pain de noix" class="produit-img">
+            </div>
+            <p>Pain de noix - 15 DH</p>
+            <button onclick="ajouterPanier('Pain de noix', 15)">Ajouter au panier</button>
+        </div>
+
+        <div class="produit">
+            <div class="produit-img-container">
+                <img src="boulangerie/pain de seigle .jpg" alt="Pain de seigle" class="produit-img">
+            </div>
+            <p>Pain de seigle - 15 DH</p>
+            <button onclick="ajouterPanier('Pain de seigle', 15)">Ajouter au panier</button>
+        </div>
+
+        <div class="produit">
+            <div class="produit-img-container">
+                <img src="boulangerie/pain de mie.jpg" alt="Pain de mie" class="produit-img">
+            </div>
+            <p>Pain de mie - 10 DH</p>
+            <button onclick="ajouterPanier('Pain de mie', 10)">Ajouter au panier</button>
+        </div>
+
+        <div class="produit">
+            <div class="produit-img-container">
+                <img src="boulangerie/pain de mais zz.jpg" alt="Pain de maïs" class="produit-img">
+            </div>
+            <p>Pain de maïs - 20 DH</p>
+            <button onclick="ajouterPanier('Pain de maïs', 20)">Ajouter au panier</button>
+        </div>
+
+        <div class="produit">
+            <div class="produit-img-container">
+                <img src="boulangerie/pain ciabatta.jpg" alt="Pain ciabatta" class="produit-img">
+            </div>
+            <p>Pain ciabatta - 10 DH</p>
+            <button onclick="ajouterPanier('Pain ciabatta', 10)">Ajouter au panier</button>
+        </div>
+        <div class="produit">
+            <div class="produit-img-container">
+                <img src="boulangerie\pain au levain.jpg" alt="Pain au levain" class="produit-img">
+            </div>
+            <p>Pain au levain - 10 DH</p>
+            <button onclick="ajouterPanier('Pain au levain', 10)">Ajouter au panier</button>
+        </div>
+        <div class="produit">
+            <div class="produit-img-container">
+                <img src="boulangerie/pan sin.jpg" alt="Pain tranché" class="produit-img">
+            </div>
+            <p>Pain tranché - 10 DH</p>
+            <button onclick="ajouterPanier('Pain tranché', 10)">Ajouter au panier</button>
+        </div>
+    </div>
+    <div class="contact-section">
+       
+        <div class="contact-grid">
+            <div class="contact-item">
+                <h2>Adresse:</h2><hr>
+                <p>Hay Nahda F10 OUJDA</p>
+            </div>
+            <div class="contact-item">
+                <h2>Horaires d'ouvertures:</h2><hr>
+                <li>Lundi--Dimanche 09h00 - 20h00</li>
+
+            </div>
+            <div class="contact-item">
+                <h2>Contact:</h2><hr>
+                <p>Tél: 07 23 45 67 89</p>
+                <p>Email: <a href="mailto:contact@lartdugout">contact@lartdugout.fr</a></p>
+            </div>
+
+    <div class="cart">
+        <h2>Votre Panier 🛒</h2>
+        <div class="notice">Paiement a la livraison</div>
+        <div class="empty-message">Votre panier est vide.<br>Ajoutez vos produits préférés.</div>
+        <ul id="liste-panier"></ul>
+        <div class="total">Total : <span id="total">0</span> DH</div>
+        <button onclick="commander()">Continuer</button>
+    </div>
+
+    <script>
+        // Charger le panier depuis le localStorage s'il existe, sinon tableau vide
+        let panier = JSON.parse(localStorage.getItem("panier")) || [];
+    
+        // Ajouter un produit au panier
+        function ajouterPanier(produit, prix) {
+            // Vérifier si le produit existe déjà
+            const index = panier.findIndex(item => item.produit === produit);
+            if (index !== -1) {
+                panier[index].quantite += 1;
+            } else {
+                panier.push({ produit, prix, quantite: 1 });
+            }
+    
+            localStorage.setItem("panier", JSON.stringify(panier));
+            afficherPanier();
+            updateEmptyMessage();
+        }
+    
+        // Afficher le contenu du panier
+        function afficherPanier() {
+            const liste = document.getElementById("liste-panier");
+            if (!liste) return;
+    
+            liste.innerHTML = "";
+            let total = 0;
+    
+            panier.forEach((item, index) => {
+                const li = document.createElement("li");
+                li.innerHTML = `
+                    ${item.produit} 
+                    <input type="number" min="1" value="${item.quantite}" onchange="changerQuantite(${index}, this.value)" style="width: 40px; margin: 0 5px;">
+                    - ${item.prix * item.quantite} DH
+                    <button onclick="supprimerProduit(${index})"
+                        style="background: transparent; color: red; border: none; margin-left: 10px; font-size: 18px; cursor: pointer;">
+                        🗑
+                    </button>
+                `;
+                liste.appendChild(li);
+                total += item.prix * item.quantite;
+            });
+    
+            const totalElement = document.getElementById("total");
+            if (totalElement) totalElement.textContent = total;
+        }
+    
+        // Modifier la quantité
+        function changerQuantite(index, nouvelleQuantite) {
+            nouvelleQuantite = parseInt(nouvelleQuantite);
+            if (nouvelleQuantite > 0) {
+                panier[index].quantite = nouvelleQuantite;
+                localStorage.setItem("panier", JSON.stringify(panier));
+                afficherPanier();
+            } else {
+                alert("La quantité doit être supérieure à 0.");
+            }
+        }
+    
+        // Supprimer un produit
+        function supprimerProduit(index) {
+            panier.splice(index, 1);
+            localStorage.setItem("panier", JSON.stringify(panier));
+            afficherPanier();
+            updateEmptyMessage();
+        }
+    
+        // Gérer le message "panier vide"
+        function updateEmptyMessage() {
+            const emptyMsg = document.querySelector(".empty-message");
+            if (emptyMsg) {
+                emptyMsg.style.display = panier.length > 0 ? "none" : "block";
+            }
+        }
+    
+        // Bouton commander
+        function commander() {
+            if (panier.length === 0) {
+                alert("Votre panier est vide. Ajoutez des produits avant de continuer.");
+                return;
+            }
+    
+            // Sauvegarde déjà faite à chaque étape, mais on peut forcer ici aussi
+            localStorage.setItem("panier", JSON.stringify(panier));
+            window.location.href = "Formulaire.html";
+        }
+    
+        // Initialisation du panier à l'ouverture de la page
+        window.onload = function () {
+            afficherPanier();
+            updateEmptyMessage();
+        };
+    </script>
+    
+    
+</body>
+
+</html>
